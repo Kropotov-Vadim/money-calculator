@@ -33,10 +33,9 @@ export class CalculateUtils {
     return this._product.type == ProductType.PDL
       ? [{payDate: this.lastPayment, paySum: this.paymentSum, residualSAmount: 0}]
       : Array(this.paymentsCount).fill('').map((_, id) => {
-        const date = new Date(this._plan.now);
-
+        const date = new Date(this._plan.now + (((id + 1) * 14) * 24 * 60 * 60 * 1000));
         return <PaymentsItem>{
-          payDate: date.setDate(date.getDate() + id + 15),
+          payDate: date.getTime(),
           paySum: this.paymentSum,
           residualSAmount: this.fullPaymentSum - ((id + 1) * this.paymentSum)
         }
