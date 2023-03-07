@@ -1,0 +1,41 @@
+<div class="calculator">
+  <div class="calculator-block">
+    <div class="calculator-block-title">Сумма: <span>({{plan.sum}} руб.)</span></div>
+
+    <mat-slider [min]="product.summrange.minsumm" [max]="product.summrange.maxsumm" [step]="product.summrange.stepsumm"
+                 [showTickMarks]="true" [discrete]="true" class="calculator-block-slider">
+      <input matSliderThumb [(ngModel)]="plan.sum" (valueChange)="change()">
+    </mat-slider>
+    <div class="calculator-block-wrap">
+      <div class="calculator-block-text">{{product.summrange.minsumm}}</div>
+      <div class="calculator-block-text">{{product.summrange.maxsumm}}</div>
+    </div>
+  </div>
+
+  <div class="calculator-block">
+    <div class="calculator-block-title">Срок: <span>({{plan.days}} дней)</span></div>
+
+    <mat-slider [min]="product.mindays" [max]="product.maxdays" [step]="product.stepdays"
+                [showTickMarks]="true" [discrete]="true" class="calculator-block-slider">
+      <input matSliderThumb [(ngModel)]="plan.days" (valueChange)="change()">
+    </mat-slider>
+    <div class="calculator-block-wrap">
+      <div class="calculator-block-text">{{product.mindays}}</div>
+      <div class="calculator-block-text">{{product.maxdays}}</div>
+    </div>
+  </div>
+
+  <div class="calculator-info">
+    Вы берете <span>{{plan.sum}} рублей</span> на <span>{{plan.days}} дней</span> под <span>{{product.rate}}%</span> в сутки
+  </div>
+
+  <div class="calculator-info">
+    Вы возвращаете <span>{{calculate.paymentsCount}}</span> платеж по <span>{{calculate.paymentSum | number: '.0-2'}}</span> рубля
+    <ng-container *ngIf="product.type == type.IL; else pdlTpl">
+      каждые 2 недели до <span>{{calculate.lastPayment | date: 'dd.MM.yyyy'}}</span>
+    </ng-container>
+    <ng-template #pdlTpl>
+      1 раз до <span>{{calculate.lastPayment | date: 'dd.MM.yyyy'}}</span>
+    </ng-template>
+  </div>
+</div>

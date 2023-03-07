@@ -1,0 +1,22 @@
+<div class="page" *ngIf="products">
+  <div class="page-main">
+    <div class="page-tabs">
+      <h2 class="title">Доступные продукты</h2>
+
+      <app-product-tab *ngFor="let product of products" [product]="product"
+                       [active]="activeTabId == product.id" (select)="changeActiveTab($event)">
+      </app-product-tab>
+    </div>
+
+    <div class="page-settings">
+      <h2 class="title">Доступные продукты</h2>
+
+      <app-product-calculator [product]="activeProduct" (planChange)="planChange($event)"></app-product-calculator>
+    </div>
+  </div>
+
+  <div class="page-info">
+    <h2 class="title">График платежей</h2>
+    <app-prodcut-table [paymentsList]="paymentList"></app-prodcut-table>
+  </div>
+</div>

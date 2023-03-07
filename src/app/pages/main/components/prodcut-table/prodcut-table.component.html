@@ -1,0 +1,19 @@
+<mat-table mat-table [dataSource]="paymentsList">
+  <ng-container matColumnDef="payDate">
+    <mat-header-cell *matHeaderCellDef> Дата платежа </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.payDate | date: 'dd.MM.yyyy'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="paySum">
+    <mat-header-cell *matHeaderCellDef> Сумма платежа, руб </mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.paySum | number: '.0-2'}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="residualSAmount">
+    <mat-header-cell *matHeaderCellDef> Остаток платежа, руб</mat-header-cell>
+    <mat-cell *matCellDef="let element">{{element.residualSAmount | number: '.0-2'}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

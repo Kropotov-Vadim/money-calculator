@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+:root {
+  --text: rgba(72, 72, 72, 0.85);
+  --title: #484848;
+  --active-color: rgb(3, 112, 255);
+  --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --shadow-hover: rgba(99, 99, 99, 0.3) 1px 4px 10px 0px;
+  --shadow-active: rgba(3, 112, 255, 0.3) 0px 4px 10px 0px;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

@@ -1,0 +1,11 @@
+<div class="product-tab" [class.active]="active" (click)="select.emit(product.id)">
+  <div class="product-tab-title">{{product.name}}</div>
+  <div class="product-tab-descr" [innerHtml]="product.description"></div>
+
+  <div class="product-tab-wrap">
+    <div class="product-tab-text">от {{product.summrange.minsumm}} до {{product.summrange.maxsumm}} рублей</div>
+    <div class="product-tab-text">от {{product.mindays}} до {{product.maxdays}} дней</div>
+    <div class="product-tab-text">под {{product.rate}}% в сутки</div>
+    <div class="product-tab-text">{{product.type == type.PDL ? 'Один платеж в конце месяца' : 'Аннуитетные платежи раз в 2 недели'}}</div>
+  </div>
+</div>
