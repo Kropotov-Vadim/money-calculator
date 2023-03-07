@@ -50,6 +50,7 @@ export class MainComponent implements OnInit, OnDestroy{
   }
 
   changeActiveTab(id: number) {
+    if (this.activeTabId == id) return;
     this.activeTabId = id;
     this._calculate.product = this.activeProduct;
     this._calculate.plan = {
